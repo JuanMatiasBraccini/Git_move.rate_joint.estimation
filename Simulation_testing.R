@@ -7,7 +7,9 @@ rm(list=ls(all=TRUE))
 library(expm)
 library(ggplot2)
 library(reshape)
-source("C:/Matias/Analyses/SOURCE_SCRIPTS/Population dynamics/fn.fig.R")
+handl_OneDrive=function(x)paste('C:/Users/myb/OneDrive - Department of Primary Industries and Regional Development/Matias',x,sep='/')
+
+source(handl_OneDrive("Analyses/SOURCE_SCRIPTS/Population dynamics/fn.fig.R"))
 
 
 #----DATA SECTION ----
@@ -208,7 +210,7 @@ ERROR=Store.sims
 ERROR=Store.pin.pars-ERROR
 #ERROR=ERROR/Store.pin.pars
 colnames(ERROR)=names(Pin.pars)
-setwd("C:/Matias/Analyses/Movement rate estimation/Joint.estim_ind.base.mod/Simulation_testing")
+setwd(handl_OneDrive("Analyses/Movement rate estimation/Joint.estim_ind.base.mod/Simulation_testing"))
 Do.jpeg="YES"
 Do.tiff="NO"
 

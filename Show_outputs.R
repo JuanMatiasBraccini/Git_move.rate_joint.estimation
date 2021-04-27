@@ -4,7 +4,9 @@ library(expm)
 require(plotrix)
 
 #DATA SECTION
-hndl="C:/Matias/Analyses/Movement rate estimation/Joint.estim_ind.base.mod"
+handl_OneDrive=function(x)paste('C:/Users/myb/OneDrive - Department of Primary Industries and Regional Development/Matias',x,sep='/')
+
+hndl=handl_OneDrive("Analyses/Movement rate estimation/Joint.estim_ind.base.mod")
 setwd(paste(hndl,"Show Gummy and whiskery outputs",sep="/"))
 
 #conventional tagging input data
@@ -60,17 +62,17 @@ names(Raw.Acous.Gummy)[match(SS,names(Raw.Acous.Gummy))]=c("Lat.rels" ,"Long.rel
 names(Raw.Acous.Whiskery)[match(SS,names(Raw.Acous.Whiskery))]=c("Lat.rels", "Long.rels")
 
 library(rgdal)
-SDGDLL_zone1=readOGR("C:/Matias/Data/Mapping/Shark_shape_files/SDGDLL_zone1.shp", layer="SDGDLL_zone1") 
-SDGDLL_zone2=readOGR("C:/Matias/Data/Mapping/Shark_shape_files/SDGDLL_zone2.shp", layer="SDGDLL_zone2") 
-WCDGDLL=readOGR("C:/Matias/Data/Mapping/Shark_shape_files/WCDGDLL.shp", layer="WCDGDLL") 
+SDGDLL_zone1=readOGR(handl_OneDrive("Data/Mapping/Shark_shape_files/SDGDLL_zone1.shp"), layer="SDGDLL_zone1") 
+SDGDLL_zone2=readOGR(handl_OneDrive("Data/Mapping/Shark_shape_files/SDGDLL_zone2.shp"), layer="SDGDLL_zone2") 
+WCDGDLL=readOGR(handl_OneDrive("Data/Mapping/Shark_shape_files/WCDGDLL.shp"), layer="WCDGDLL") 
 
 
 
 #Plot management zones and receiver lines for TDGDLF
 library(PBSmapping)
 #receivers
-AATAMS.all=read.csv("C:/Matias/Data/Tagging/Acoustic_tagging/Acoustic_tagging_data/AATAMS.all.csv")
-SMN.all=read.csv("C:/Matias/Data/Tagging/Acoustic_tagging/Acoustic_tagging_data/SMN.all.csv")
+AATAMS.all=read.csv(handl_OneDrive("Data/Tagging/Acoustic_tagging/Acoustic_tagging_data/AATAMS.all.csv"))
+SMN.all=read.csv(handl_OneDrive("Data/Tagging/Acoustic_tagging/Acoustic_tagging_data/SMN.all.csv"))
 Receivers=rbind(SMN.all,AATAMS.all)
 Receivers$Station=paste(Receivers$latitude,Receivers$longitude) 
 Receivers=Receivers[order(Receivers$Station),]
@@ -82,7 +84,7 @@ Rotnest=c(115.50,-32.02)
 Zn.col=c("grey80","grey60","grey40")
 names(Zn.col)=c("West","Zone1","Zone2" )
 
-source("C:/Matias/Analyses/SOURCE_SCRIPTS/Plot.Map.R")  
+source(handl_OneDrive("Analyses/SOURCE_SCRIPTS/Plot.Map.R"))  
 data(worldLLhigh)
 
 fn.map=function(South.WA.lat,South.WA.long,PLATE,dat)
@@ -171,8 +173,8 @@ mtext("Acoustic tags",4,cex=1.75,line=1)
 text(117.25,-33,("Western"),col="black", cex=3)
 text(117.25,-33.5,("Australia"),col="black", cex=3)
 
-mtext("Latitude (ºS)",side=2,line=-0.5,las=3,cex=1.75,outer=T)
-mtext("Longitude (ºE)",side=1,line=-0.5,cex=1.75,outer=T)
+mtext("Latitude (?S)",side=2,line=-0.5,las=3,cex=1.75,outer=T)
+mtext("Longitude (?E)",side=1,line=-0.5,cex=1.75,outer=T)
 
 dev.off()
 
