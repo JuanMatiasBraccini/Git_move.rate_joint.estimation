@@ -4,7 +4,7 @@ library(expm)
 require(plotrix)
 
 #DATA SECTION
-handl_OneDrive=function(x)paste('C:/Users/myb/OneDrive - Department of Primary Industries and Regional Development/Matias',x,sep='/')
+if(!exists('handl_OneDrive')) source('C:/Users/myb/OneDrive - Department of Primary Industries and Regional Development/Matias/Analyses/SOURCE_SCRIPTS/Git_other/handl_OneDrive.R')
 
 hndl=handl_OneDrive("Analyses/Movement rate estimation/Joint.estim_ind.base.mod")
 setwd(paste(hndl,"Show Gummy and whiskery outputs",sep="/"))
